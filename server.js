@@ -25,9 +25,9 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/kanji-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
+require("./routes/api/kanji.js")(app);
+require("./routes/api/user.js")(app);
+require("./routes/api/index.js")(app);
 
 
 // Requiring our models for syncing
