@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import Flashcard from './Components/Flashcard';
+import Registration from './Components/Registration';
+import './App.css';
 
 class App extends Component {
   
@@ -32,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Registration />
         My app
           <Flashcard 
             flashcard={this.state.kanji}/>
