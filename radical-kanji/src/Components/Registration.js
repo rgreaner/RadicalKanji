@@ -19,7 +19,8 @@ class Flashcard extends Component {
       <div className="Flashcard">
         Kanji cards
         {kanjiList}
-
+      </div>)
+  }}
 
 class Registration extends Component {
 
