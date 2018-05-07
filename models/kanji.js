@@ -20,7 +20,8 @@ module.exports = function (sequelize, DataTypes) {
 
     Kanji.associate = models => {
         Kanji.belongsTo(models.User, {
-            allowNull: false
+            foreignKey: {
+            allowNull: false}
         });
     };
     return Kanji;
