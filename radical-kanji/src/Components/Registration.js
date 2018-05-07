@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
 
+import Kanji from './Kanji'
+
+class Flashcard extends Component {
+  render() {
+    let kanjiList;
+    if (this.props.flashcard) {
+        kanjiList = this.props.flashcard.map(indivKanji => {
+            //console.log(indivKanji);
+            return (
+                <Kanji key={indivKanji.meaning} kanji={indivKanji} />
+            )
+        })
+    }
+    
+    console.log(this.props)
+    return (
+      <div className="Flashcard">
+        Kanji cards
+        {kanjiList}
+
+
 class Registration extends Component {
 
   constructor(){
@@ -41,9 +62,13 @@ class Registration extends Component {
           </div>
           <input type="submit" value="Submit" />
         </form>
+
       </div>
     );
   }
 }
+
+
+export default Flashcard;
 
 export default Registration;
