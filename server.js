@@ -6,7 +6,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-
+const routes = require("./routes");
 // Sets up the Express App
 // =============================================================
 var app = express();
@@ -25,10 +25,9 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
-require("./routes/api/kanji.js")(app);
-require("./routes/api/user.js")(app);
-require("./routes/api/index.js")(app);
-
+// require("./routes/api/kanji.js")(app);
+// require("./routes/api/user.js")(app);
+app.use(routes);
 
 // Requiring our models for syncing
 var db = require("./models");
