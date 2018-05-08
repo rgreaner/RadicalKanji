@@ -1,26 +1,5 @@
 import React, { Component } from 'react';
-
 import Kanji from './Kanji'
-
-class Flashcard extends Component {
-  render() {
-    let kanjiList;
-    if (this.props.flashcard) {
-        kanjiList = this.props.flashcard.map(indivKanji => {
-            //console.log(indivKanji);
-            return (
-                <Kanji key={indivKanji.meaning} kanji={indivKanji} />
-            )
-        })
-    }
-    
-    console.log(this.props)
-    return (
-      <div className="Flashcard">
-        Kanji cards
-        {kanjiList}
-      </div>)
-  }}
 
 class Registration extends Component {
 
@@ -30,6 +9,10 @@ class Registration extends Component {
       newUser: {}
     }
   }  
+
+  handleAddUser(user){
+    console.log(user);
+  }
 
   handleSubmit(e) {
     console.log(this.refs.username.value + " submitted...sort of...with a pw of " + this.refs.password.value)
@@ -43,6 +26,7 @@ class Registration extends Component {
       }
     }, function(){
         console.log(this.state)
+        this.props.addUser(this.state.newUser);
       })
     }
     e.preventDefault();
@@ -68,8 +52,5 @@ class Registration extends Component {
     );
   }
 }
-
-
-export default Flashcard;
 
 export default Registration;

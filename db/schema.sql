@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS radicalKanji_db;
 CREATE DATABASE radicalKanji_db;
 
 use radicalKanji_db;
