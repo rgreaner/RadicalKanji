@@ -12,7 +12,7 @@ class Kanji extends Component {
   }
 
   flipCard() {
-    if (!this.state.flipped) {
+    if (this.kanji.flipped==false) {
       this.setState({flipped: true})
     }
     else {
@@ -27,17 +27,17 @@ class Kanji extends Component {
       <li className="Kanji">
         {this.state.flipped ? 
           <div>
-            <div>{this.state.meaning}</div>
-            <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
-          </div>
+          {this.state.kanjiLook} <br />
+          {this.state.kanjiStory} <br />
+          {this.state.kanjiStroke} <br />
+          {this.state.kanjiLook} <br />
+          <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
+        </div>
           :
           <div>
-            {this.state.kanjiLook} <br />
-            {this.state.kanjiStory} <br />
-            {this.state.kanjiStroke} <br />
-            {this.state.kanjiLook} <br />
-            <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
-          </div>
+          <div>{this.state.meaning}</div>
+          <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
+        </div>
         }
       </li>
       
