@@ -9,23 +9,23 @@ class Kanji extends Component {
 
   componentDidMount() {
     this.setState({
-      ...this.props.kanji
-    //axios.get ("dbroute", {})
-    //.then (res => {
-      //change to string
-    }
-  )
-
+      ...this.props.kanjiShown
+    })
 };
 
+
+    
   flipCard() {
-    if (!this.state.flipped) {
+    console.log(this.state)
+    if (this.state.flipped===false) {
       this.setState({flipped: true})
     }
     else {
       this.setState({flipped: false})
     }
   }
+
+
 
   render() {
     console.log(this.state)
@@ -34,17 +34,20 @@ class Kanji extends Component {
       <li className="Kanji">
         {this.state.flipped ? 
           <div>
-            <div>{this.state.meaning}</div>
-            <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
-          </div>
+          {this.props.kanjiShown.kanjiLook} <br />
+          {this.props.kanjiShown.kanjiStory} <br />
+          {this.props.kanjiShown.kanjiStroke} <br />
+          {/* {this.state.kanjiLook} <br /> */}
+          <button type="button" className="flipOp" onClick={this.flipCard.bind(this)}>Flip Card</button>
+          <button type="button" className="nextKanji" onClick={this.props.changeCard.bind(this)}>Next Kanji</button>
+        </div>
           :
+        <div>
           <div>
-            {this.state.kanjiLook} <br />
-            {this.state.kanjiStory} <br />
-            {this.state.kanjiStroke} <br />
-            {this.state.kanjiLook} <br />
-            <button type="button" className="flipOp" onClick={this.flipCard}>Flip Card</button>
+          {/* {this.props.kanjiShown.kanjiMeaning}<br /> */}
           </div>
+          <button type="button" className="flipOp" onClick={this.flipCard.bind(this)}>Flip Card</button>
+        </div>
         }
       </li>
       

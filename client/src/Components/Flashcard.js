@@ -2,43 +2,46 @@ import React, { Component } from 'react';
 import Kanji from './Kanji'
 import API from "../utils/API";
 
-// const testKanji = [{
-//     "id": 1,
-//     "meaning": "Day",
-//     "kanjiLook": "日",
-//     "kanjiStory": "Pictograph of a sun...with a giant sunspot",
-//     "kanjiStroke": "10",
-//     "createdAt": null,
-//     "updatedAt": null,
-//     "UserId": null
+
+const testKanji = [{
+    "id": 1,
+    "kanjiMeaning": "Day",
+    "kanjiLook": "日",
+    "kanjiStory": "Pictograph of a sun...with a giant sunspot",
+    "kanjiStroke": "10",
+    "createdAt": null,
+    "updatedAt": null,
+    "UserId": null
   
-// },
-// {
-//   "id": 2,
-//     "meaning": "Temple",
-//     "kanjiLook": "寺",
-//     "kanjiStory": "temple is attached to the ground with a nail",
-//     "kanjiStroke": "10",
-//     "createdAt": null,
-//     "updatedAt": null,
-//     "UserId": null
-// },
-// {
-//   "id": 3,
-//     "meaning": "Time",
-//     "kanjiLook": "時",
-//     "kanjiStory": "Time is the sun rising over a temple",
-//     "kanjiStroke": "10",
-//     "createdAt": null,
-//     "updatedAt": null,
-//     "UserId": null
-// }]
+},
+{
+  "id": 2,
+    "kanjiMeaning": "Temple",
+    "kanjiLook": "寺",
+    "kanjiStory": "temple is attached to the ground with a nail",
+    "kanjiStroke": "10",
+    "createdAt": null,
+    "updatedAt": null,
+    "UserId": null
+},
+{
+  "id": 3,
+    "kanjiMeaning": "Time",
+    "kanjiLook": "時",
+    "kanjiStory": "Time is the sun rising over a temple",
+    "kanjiStroke": "10",
+    "createdAt": null,
+    "updatedAt": null,
+    "UserId": null
+}]
+
 
 class Flashcard extends Component {
   constructor() {
     super();
     this.state = {
-      kanji: []
+      kanji: [],
+      shownFlashCard: 0
     }
   }
   //in componentDidMount do call to DB to get kanji info
@@ -56,22 +59,20 @@ loadKanji = () => {
     this.setState({kanji:API.getKanjis })
   )
 
-};
-  render() {
-    let kanjiList = this.state.kanji.map((indivKanji, index) => {
-            //console.log(indivKanji);
-            return (
-                <Kanji key={index} kanji={indivKanji} />
-            )
-        })
+
+  changeCard() {
+    this.setState({shownFlashCard: this.state.shownFlashCard++});
+  }
+
+  render() {    
+
     
-    
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="Flashcard">
         Kanji cards
-        {kanjiList}
-      </div>
+          <Kanji changeCard={this.changeCard} kanjiShown={this.state.kanji[this.state.shownFlashCard]}  />
+        </div>
     );
   }
 }
