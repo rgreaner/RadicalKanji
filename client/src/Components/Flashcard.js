@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Kanji from './Kanji'
+import API from "../utils/API";
+
 
 const testKanji = [{
     "id": 1,
@@ -33,6 +35,7 @@ const testKanji = [{
     "UserId": null
 }]
 
+
 class Flashcard extends Component {
   constructor() {
     super();
@@ -44,14 +47,25 @@ class Flashcard extends Component {
   //in componentDidMount do call to DB to get kanji info
   //then use the db to update the state. will not use testKanji once connection to db is established
   componentDidMount(){
-    this.setState({kanji: testKanji})
-  }
+    
+    this.loadKanji();
+    console.log("heah",API.getKanjis)
+  };
+
+  
+loadKanji = () => {
+  API.getKanjis()
+  .then (res =>
+    this.setState({kanji:API.getKanjis })
+  )
+
 
   changeCard() {
     this.setState({shownFlashCard: this.state.shownFlashCard++});
   }
 
   render() {    
+
     
     // console.log(this.props)
     return (

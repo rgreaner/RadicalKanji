@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 
+
 class Kanji extends Component {
   state = {
-      flipped: false
+      flipped: false,
+      kanjiInfo: []
   }
 
   componentDidMount() {
     this.setState({
       ...this.props.kanjiShown
     })
-  }
+};
+
 
     
   flipCard() {
@@ -51,5 +54,4 @@ class Kanji extends Component {
     );
   }
 }
-
 export default Kanji;

@@ -8,8 +8,7 @@ router.route("/")
 .post(kanjiController.create);
 
 //Matches "/api/kanji/id"
-router
-    .route("/:id")
+router.route("/:id")
     .get(kanjiController.findById)
     .put(kanjiController.update)
     .delete(kanjiController.remove);
