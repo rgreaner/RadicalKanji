@@ -3,10 +3,7 @@ const db = require("../models");
 //Methods for the kanjiController
 module.exports = {
     findAll: function(req, res) {
-        var query = {};
-        if (req.query.user_id) {
-            query.UserId= req.query.user_id;
-        } 
+        console.log("in the findAll kanji function");
         db.Kanji
         .find(req.query)
         .then(dbKanji => res.json(dbKanji))

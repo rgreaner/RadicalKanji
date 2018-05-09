@@ -3,37 +3,37 @@ import Kanji from './Kanji'
 import API from "../utils/API";
 
 
-const testKanji = [{
-    "id": 1,
-    "kanjiMeaning": "Day",
-    "kanjiLook": "日",
-    "kanjiStory": "Pictograph of a sun...with a giant sunspot",
-    "kanjiStroke": "10",
-    "createdAt": null,
-    "updatedAt": null,
-    "UserId": null
+// const testKanji = [{
+//     "id": 1,
+//     "kanjiMeaning": "Day",
+//     "kanjiLook": "日",
+//     "kanjiStory": "Pictograph of a sun...with a giant sunspot",
+//     "kanjiStroke": "10",
+//     "createdAt": null,
+//     "updatedAt": null,
+//     "UserId": null
   
-},
-{
-  "id": 2,
-    "kanjiMeaning": "Temple",
-    "kanjiLook": "寺",
-    "kanjiStory": "temple is attached to the ground with a nail",
-    "kanjiStroke": "10",
-    "createdAt": null,
-    "updatedAt": null,
-    "UserId": null
-},
-{
-  "id": 3,
-    "kanjiMeaning": "Time",
-    "kanjiLook": "時",
-    "kanjiStory": "Time is the sun rising over a temple",
-    "kanjiStroke": "10",
-    "createdAt": null,
-    "updatedAt": null,
-    "UserId": null
-}]
+// },
+// {
+//   "id": 2,
+//     "kanjiMeaning": "Temple",
+//     "kanjiLook": "寺",
+//     "kanjiStory": "temple is attached to the ground with a nail",
+//     "kanjiStroke": "10",
+//     "createdAt": null,
+//     "updatedAt": null,
+//     "UserId": null
+// },
+// {
+//   "id": 3,
+//     "kanjiMeaning": "Time",
+//     "kanjiLook": "時",
+//     "kanjiStory": "Time is the sun rising over a temple",
+//     "kanjiStroke": "10",
+//     "createdAt": null,
+//     "updatedAt": null,
+//     "UserId": null
+// }]
 
 
 class Flashcard extends Component {
@@ -49,7 +49,7 @@ class Flashcard extends Component {
   componentDidMount(){
     
     this.loadKanji();
-    console.log("heah",API.getKanjis)
+    console.log("here", API.getKanjis)
   };
 
   
@@ -58,11 +58,11 @@ loadKanji = () => {
   .then (res =>
     this.setState({kanji:API.getKanjis })
   )
-
+}
 
   changeCard() {
     this.setState({shownFlashCard: this.state.shownFlashCard++});
-  }
+  };
 
   render() {    
 
@@ -75,6 +75,7 @@ loadKanji = () => {
         </div>
     );
   }
+
 }
 
 export default Flashcard;
