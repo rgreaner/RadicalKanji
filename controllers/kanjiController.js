@@ -5,7 +5,7 @@ module.exports = {
     findAll: function(req, res) {
         console.log("in the findAll kanji function");
         db.Kanji
-        .find(req.query)
+        .findAll(req.query)
         .then(dbKanji => res.json(dbKanji))
         .catch(err => res.status(422).json(err));
     },

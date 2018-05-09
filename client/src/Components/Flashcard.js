@@ -55,8 +55,9 @@ class Flashcard extends Component {
   
 loadKanji = () => {
   API.getKanjis()
-  .then (res =>
-    this.setState({kanji:API.getKanjis })
+  .then (res => {
+    console.log("res",res)
+    this.setState({kanji: res.data })}
   )
 }
 
