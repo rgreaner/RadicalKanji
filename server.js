@@ -29,8 +29,7 @@ app.use(express.static("public"));
 // require("./routes/api/user.js")(app);
 app.use(routes);
 
-// Requiring our models for syncing
-var db = require("./models");
+
 // Sets up the Express app to handle data parsing
 
 // Syncing our sequelize models and then starting our Express app

@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 
+
 class Kanji extends Component {
   state = {
-      flipped: false
+      flipped: false,
+      kanjiInfo: []
   }
 
   componentDidMount() {
     this.setState({
       ...this.props.kanji
-    })
-  }
+    //axios.get ("dbroute", {})
+    //.then (res => {
+      //change to string
+    }
+  )
+
+};
 
   flipCard() {
     if (!this.state.flipped) {
@@ -44,5 +51,4 @@ class Kanji extends Component {
     );
   }
 }
-
 export default Kanji;
