@@ -3,7 +3,7 @@ import Kanji from './Kanji'
 
 const testKanji = [{
     "id": 1,
-    "meaning": "Day",
+    "kanjiMeaning": "Day",
     "kanjiLook": "日",
     "kanjiStory": "Pictograph of a sun...with a giant sunspot",
     "kanjiStroke": "10",
@@ -14,7 +14,7 @@ const testKanji = [{
 },
 {
   "id": 2,
-    "meaning": "Temple",
+    "kanjiMeaning": "Temple",
     "kanjiLook": "寺",
     "kanjiStory": "temple is attached to the ground with a nail",
     "kanjiStroke": "10",
@@ -24,7 +24,7 @@ const testKanji = [{
 },
 {
   "id": 3,
-    "meaning": "Time",
+    "kanjiMeaning": "Time",
     "kanjiLook": "時",
     "kanjiStory": "Time is the sun rising over a temple",
     "kanjiStroke": "10",
@@ -37,7 +37,8 @@ class Flashcard extends Component {
   constructor() {
     super();
     this.state = {
-      kanji: []
+      kanji: [],
+      shownFlashCard: 0
     }
   }
   //in componentDidMount do call to DB to get kanji info
@@ -46,21 +47,18 @@ class Flashcard extends Component {
     this.setState({kanji: testKanji})
   }
 
-  render() {
-    let kanjiList = this.state.kanji.map((indivKanji, index) => {
-            //console.log(indivKanji);
-            return (
-                <Kanji key={index} kanji={indivKanji} />
-            )
-        })
+  changeCard() {
+    this.setState({shownFlashCard: this.state.shownFlashCard++});
+  }
+
+  render() {    
     
-    
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="Flashcard">
         Kanji cards
-        {kanjiList}
-      </div>
+          <Kanji changeCard={this.changeCard} kanjiShown={this.state.kanji[this.state.shownFlashCard]}  />
+        </div>
     );
   }
 }
