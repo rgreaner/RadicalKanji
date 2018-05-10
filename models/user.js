@@ -15,10 +15,10 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    User.associate = models => {
-        User.hasMany(models.Kanji, {
-            onDelete: "no action"
-        });
-    };
+    // User.associate = models => {
+    //     User.hasMany(models.Kanji, {
+    //         onDelete: "no action"
+    //     });
+    // };
     return User;
 };
