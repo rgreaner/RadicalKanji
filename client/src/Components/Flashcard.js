@@ -2,6 +2,46 @@ import React, { Component } from 'react';
 import Kanji from './Kanji'
 import API from "../utils/API";
 
+class Flashcard extends Component {
+
+    state = {
+      kanji: [],
+      shownFlashCard: 0
+    }
+
+  //in componentDidMount do call to DB to get kanji info
+  //then use the db to update the state. will not use testKanji once connection to db is established
+  componentDidMount(){
+    
+    this.loadKanji();
+    console.log("here", API.getKanjis)
+  };
+
+  loadKanji = () => {
+    API.getKanjis()
+    .then (res => {
+      console.log("res",res)
+      this.setState({kanji: res.data })}
+    )
+  }
+
+  changeCard() {
+    this.setState({shownFlashCard: this.state.shownFlashCard++});
+  };
+
+  render() {    
+    // console.log(this.props)
+    return (
+      <div className="Flashcard">
+        Kanji cards
+          <Kanji changeCard={this.changeCard} kanjiShown={this.state.kanji[this.state.shownFlashCard]}  />
+        </div>
+    );
+  }
+}
+
+export default Flashcard;
+
 
 // const testKanji = [{
 //     "id": 1,
@@ -34,49 +74,3 @@ import API from "../utils/API";
 //     "updatedAt": null,
 //     "UserId": null
 // }]
-
-
-class Flashcard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      kanji: [],
-      shownFlashCard: 0
-    }
-  }
-  //in componentDidMount do call to DB to get kanji info
-  //then use the db to update the state. will not use testKanji once connection to db is established
-  componentDidMount(){
-    
-    this.loadKanji();
-    console.log("here", API.getKanjis)
-  };
-
-  
-loadKanji = () => {
-  API.getKanjis()
-  .then (res => {
-    console.log("res",res)
-    this.setState({kanji: res.data })}
-  )
-}
-
-  changeCard() {
-    this.setState({shownFlashCard: this.state.shownFlashCard++});
-  };
-
-  render() {    
-
-    
-    // console.log(this.props)
-    return (
-      <div className="Flashcard">
-        Kanji cards
-          <Kanji changeCard={this.changeCard} kanjiShown={this.state.kanji[this.state.shownFlashCard]}  />
-        </div>
-    );
-  }
-
-}
-
-export default Flashcard;
