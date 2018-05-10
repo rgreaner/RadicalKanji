@@ -13,16 +13,16 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         },
         kanjiStroke: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     });
 
-    Kanji.associate = models => {
-        Kanji.belongsTo(models.User, {
-            foreignKey: {
-            allowNull: false}
-        });
-    };
+    // Kanji.associate = models => {
+    //     Kanji.belongsTo(models.User, {
+    //         foreignKey: {
+    //         allowNull: false}
+    //     });
+    // };
     return Kanji;
 };
